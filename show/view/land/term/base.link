@@ -1,0 +1,46 @@
+
+load </case>
+  take host crow
+
+load </base/form/term>
+  take form term
+
+form term-url
+  suit url
+    link path, like term-path
+    link query, like term-query
+
+hook load
+  take url, like term-url
+
+  save list
+    call crow/load
+      link where-equal
+        term form
+        term term
+      link where-equal
+        term term/talk/slug
+        loan url/talk
+      link limit, mark 100
+
+  make mesh
+    bind list, move list
+
+work term-show
+  take list, list term
+
+  zone list
+    walk list, loan list
+      hook link
+        take term, name link
+        zone term, loan term
+
+work term
+  take term, like term
+
+  zone slab
+    zone slab
+      bind space-bottom, mark 16
+      zone text
+        bind size, mark 24
+        bind text, loan term/title

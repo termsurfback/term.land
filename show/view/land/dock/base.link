@@ -1,0 +1,6 @@
+
+zone dock
+  tool login-with-facebook
+  tool login-with-google
+  tool login-with-email
+  tool forgot-password

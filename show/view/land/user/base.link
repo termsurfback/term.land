@@ -1,0 +1,30 @@
+
+zone user-page
+  take url, like user-url
+
+  save provider
+    call load
+      call make-user-find
+        loan url/user
+
+  tool user-header
+    bind user, loan provider/data
+  tool user-recent-activity
+    bind user, loan provider/data
+
+zone user-header
+  take user, like user
+
+  zone slab
+    bind h-center, term true
+    bind layout, term vertical
+    bind gap, 16
+    zone image
+      bind width, make size, 80, term pixel
+      bind link, loan user/avatar/link
+    zone text
+      bind tag, term h1
+      loan user/name
+    zone text
+      bind tag, term h2
+      loan user/handle

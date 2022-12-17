@@ -1,0 +1,8 @@
+
+form talk-url
+  suit url
+
+hook load
+  take url, like url
+
+view talk

@@ -1,0 +1,109 @@
+
+task make-fade-in
+  take link, like term
+
+  make animation
+    bind link, loan link
+    bind time
+      call make-seconds, 1
+    bind step
+      make animation-step
+        bind look
+          make look
+            bind opacity, 0
+      make animation-step
+        bind look
+          make look
+            bind opacity, 1
+
+task make-fade-out
+  take group, like term
+
+  make animation
+    bind group, loan group
+    bind time
+      call make-seconds, 1
+    bind step
+      make animation-step
+        bind look
+          make look
+            bind opacity, 1
+      make animation-step
+        bind look
+          make look
+            bind opacity, 0
+
+tree fade-in-out
+  take group, like term
+
+  hook fuse
+    hook show
+      call make-fade-in
+        loan group
+    hook hide
+      call make-fade-out
+        loan group
+
+work legal-pages-navigation
+  zone bind
+    bind name, term navigation
+    bind value, <privacy>
+    zone text, <Privacy Policy>
+      fuse fade-in-out, term legal-pages
+  zone bind
+    bind name, term navigation
+    bind value, <bar>
+    zone text, <Bar>
+      fuse fade-in-out, term legal-pages
+
+work legal-pages-content
+  hook mounted
+    window.addEventListener
+
+work bind
+  take name, like term
+  take value
+  take tree
+
+  bond show
+
+  hook mount # before mount
+    stem test
+      call is-equal
+        call system/read
+          loan name
+        loan value
+      hook true
+        save show, term true
+      hook false
+        save show, term false
+
+  hook update
+    bind name
+    bind value
+
+    task update
+      take v, name value
+      stem test
+        call is-equal
+          loan v
+          loan value
+        hook true
+          save show, term true
+
+    task clear
+      call system/unwatch, loan name
+        hook update, base update
+
+    save callback
+      call system/watch, loan name
+        hook update, base update
+
+    back clear
+
+  stem test
+    call is-equal
+      loan show
+      term true
+    hook true
+      loan tree

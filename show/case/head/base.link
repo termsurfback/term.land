@@ -1,0 +1,16 @@
+
+host home, like head
+  host name, <Term Land>
+  host term
+    <language>
+    <dictionary>
+  host hint, <A modern dictionary.>
+
+host talk, like head
+  take language, like language
+
+  host name, <{{language/title}} Language @ Term Land>
+  host term
+    <language>
+    loan language/title
+  host hint, <The {{language/title}} language and many of its words defined.>

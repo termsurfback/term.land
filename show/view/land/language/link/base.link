@@ -1,0 +1,39 @@
+
+load <@treesurf/crow/base>
+  take task find
+
+load </base/form/language>
+  take form language
+
+load </base/find>
+  take task make-language-find
+
+zone language-loading
+
+zone language-loaded
+
+zone language-failed
+
+zone language
+  take url, like language-url
+
+  save request, like request, like language
+    call find
+      call make-language-find
+        loan url/talk
+
+  tool talk-{request/status}
+
+  tool slab
+    bind link, </talk/{{talk/term}}>
+    bind v-center, bond true
+    bind h-center, bond true
+    tool slab
+      bind space-bottom, 16
+      tool text
+        bind size, 24
+        bind text, loan talk/name
+    tool slab
+      tool text
+        bind size, 14
+        bind text, <{{talk/term-size}} terms>

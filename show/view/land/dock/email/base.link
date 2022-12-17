@@ -1,0 +1,52 @@
+
+form form
+  link email, like text
+  link password, like text
+
+zone processing-login-with-email-form
+  hook update
+    call update-store
+      term processing-login
+      term true
+
+    task clear
+      call update-store
+        term processing-login
+        term false
+
+zone login-with-email
+  save login-provider
+
+  stem case
+    case processing
+      tool processing-login-with-email-form
+      tool login-with-email-form
+        bind data, loan login-provider/data
+    case idle
+    case complete
+      call redirect
+
+zone login-with-email-form
+  tool form
+    hook submit
+      take data, like form
+      call login, loan data
+    tool form-field
+      bind label, <Email>
+      tool input
+    tool form-field
+      bind label, <Password>
+      tool input
+    tool button
+      tool bind
+        bind name, term processing-login
+        bind value, term true
+        tool slab
+          bind gap, 12
+          tool image
+            bind link, </spinner.png>
+          tool text, <Processing...>
+      tool bind
+        bind name, term processing-login
+        bind value, term false
+        tool text, <Login>

@@ -1,0 +1,13 @@
+
+load <@treesurf/crow/suit/url>
+  take suit url
+  take suit url-path
+
+form language-path
+  wear url-path
+
+  link talk, like text
+
+form language-url
+  wear url
+    link path, like language-path

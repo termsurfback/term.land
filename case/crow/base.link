@@ -1,0 +1,17 @@
+
+load <@treesurf/crow>
+  take form crow
+
+load <@treesurf/crow/base/{base/case/view}>
+  take form base
+    save form crow-base
+
+load <@treesurf/crow/draw/html>
+  take form draw
+
+host crow
+  make crow
+    bind base
+      make crow-base
+        bind case, loan base/case
+    bind draw, make draw

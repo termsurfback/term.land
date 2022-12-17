@@ -1,0 +1,16 @@
+
+task make-find-language
+  take term, like term
+
+  make find
+    bind limit, 1
+    bind filter
+      make mesh
+        bind form, like language
+        bind term, loan term
+    bind select
+      make mesh
+        bind hash, term true
+        bind name, term true
+        bind term, term true
+        bind term-count, term true

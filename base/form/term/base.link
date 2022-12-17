@@ -1,6 +1,15 @@
 
 form term
   link text, like text
+  link recording, list audio-recording
   link pronunciation, list term-pronunciation
   link transcription, list term-transcription
   link meaning, list term-meaning
+
+form term-pronunciation
+  link text, like text
+  link term, like term
+
+form term-transcription
+  link text, like text
+  link term, like term

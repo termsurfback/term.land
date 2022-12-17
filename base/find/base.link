@@ -1,16 +1,92 @@
 
-task make-find-language
-  take term, like term
-
-  make find
-    bind limit, 1
-    bind filter
-      make mesh
-        bind form, like language
-        bind term, loan term
-    bind select
-      make mesh
+host find-language-list, like find, list language
+  bind filter
+    bind form, like language
+  bind select
+    bind size, term true
+    bind list
+      bind select
         bind hash, term true
         bind name, term true
         bind term, term true
         bind term-count, term true
+
+host find-language, like find, like language
+  take term, like term
+
+  bind limit, 1
+  bind filter
+    bind form, like language
+    bind term, loan term
+  bind select
+    bind hash, term true
+    bind name, term true
+    bind term, term true
+    bind term-count, term true
+
+host find-term-list, like find, list term
+  take language, like term
+
+  bind filter
+    bind form, like term
+    bind language/term, loan language
+  bind select
+    bind size, term true
+    bind list
+      bind select
+        bind hash, term true
+        bind name, term true
+        bind meaning
+          bind select
+            bind list
+              bind select
+                bind hash, term true
+                bind text, term true
+        bind prounciation
+          bind select
+            bind list
+              bind select
+                bind hash, term true
+                bind text, term true
+        bind transcription
+          bind select
+            bind list
+              bind select
+                bind hash, term true
+                bind text, term true
+
+host find-user-list, like find, list user
+  bind filter
+    bind form, like user
+  bind select
+    bind size, term true
+    bind list
+      bind select
+        bind hash, term true
+        bind name, term true
+        bind handle, term true
+        bind avatar, fuse image
+
+host find-user, like find, like user
+  take handle, like term
+
+  bind limit, 1
+  bind filter
+    bind form, like user
+    bind handle, loan handle
+  bind select
+    bind hash, term true
+    bind name, term true
+    bind handle, term true
+    bind avatar, fuse image
+
+tree image
+  hook fuse
+    bind select
+      bind attachment
+        bind select
+          bind list
+            bind select
+              bind link, term true
+              bind width, term true
+              bind height, term true

@@ -1,0 +1,6 @@
+
+task update-user
+  take input, like user-update-input
+
+task remove-user
+  take input, like user-remove-input

@@ -1,0 +1,6 @@
+
+This is the server, where the API lives.
+
+The `load` is for rendering the views and URLs.
+
+The `call` is for doing API calls.

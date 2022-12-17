@@ -1,0 +1,8 @@
+
+deck <@treesurf/term.land>
+  hide true
+  make <dictionary>
+  make <lexicon>
+  mark <0.0.1>
+  term apache-2
+  deck ./face

@@ -1,0 +1,9 @@
+
+fuse <../base>
+
+hook </dock/:name>
+  task redirect-to-oauth-provider
+
+hook </dock/:name/call>
+  note <Oauth callback.>
+  task redirect-to-page-before-oauth

@@ -1,0 +1,32 @@
+
+hook </>
+  show home
+
+hook </talk>
+  show talk-list
+
+hook </talk/:talk>
+  show talk
+
+hook </talk/:talk/term>
+  show term-list
+
+hook </talk/:talk/term/:term>
+  show term
+
+hook </code>
+  show code-list
+
+hook </code/:name>
+  show code
+
+hook </seek>
+  note <Signup.>
+  show seek
+
+hook </dock>
+  note <Login.>
+  show dock
+
+hook </@:name>
+  show user

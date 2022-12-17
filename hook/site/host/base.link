@@ -1,6 +1,4 @@
 
-fuse <../base>
-
 hook </dock/:name>
   task redirect-to-oauth-provider
 

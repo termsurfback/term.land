@@ -1,5 +1,0 @@
-
-load <./app>
-  take view app
-
-call mount-app, make app

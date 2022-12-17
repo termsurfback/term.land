@@ -1,0 +1,5 @@
+
+load <./land/site>
+  take view site
+
+call land-site, make site

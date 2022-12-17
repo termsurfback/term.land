@@ -1,0 +1,6 @@
+
+form term
+  link text, like text
+  link pronunciation, list term-pronunciation
+  link transcription, list term-transcription
+  link meaning, list term-meaning
